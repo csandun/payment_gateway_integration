@@ -13,7 +13,8 @@
 
 ### Scripts
 #### Filter app insight events
-```requests 
+```
+requests 
 | extend requestVal = tostring(todynamic(tostring( customDimensions.RequestBody))["event"])
 | where  tostring( customDimensions.RequestBody)  contains "00b30000618d82798c7ed2e6f9488f86"  or tostring( customDimensions.ResponseBody)  contains "00b30000618d82798c7ed2e6f9488f86" 
 | project timestamp ,name , requestVal, "" , customDimensions
